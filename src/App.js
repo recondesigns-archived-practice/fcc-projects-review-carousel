@@ -1,18 +1,44 @@
 import React from "react";
 import styled from "styled-components";
+import Card from "./components/Card";
 
 const AppContainer = styled.div`
-  & > h1 {
-    margin: 0px;
-    text-align: center;
-  }
+  padding: 40px 16px 0px 16px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f1f5f8;
 `;
+
+const Wrapper = styled.div`
+  margin-bottom: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Title = styled.h1`
+  margin-bottom: 4px;
+  width: 100%;
+  text-align: center;
+`;
+
+const Underline = styled.div`
+  width: 64px;
+  height: 4px;
+  background: #49a6ea;
+`;
+
 export default function App() {
   return (
-    <div className="App">
-      <AppContainer>
-        <h1>{"App Component!"}</h1>
-      </AppContainer>
-    </div>
+    <AppContainer>
+      <Wrapper>
+        <Title>{"Our Reviews"}</Title>
+        <Underline />
+      </Wrapper>
+      <Card />
+    </AppContainer>
   );
 }
