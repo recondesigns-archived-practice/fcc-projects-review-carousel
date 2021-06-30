@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { AppContext } from "../ContextProvider";
-import { reviews } from "../reviewData";
+import { handleNext, handlePrevious } from "./helpers";
 import previousIcon from "../assets/images/previous-icon-blue.svg";
 import nextIcon from "../assets/images/next-icon-blue.svg";
 
@@ -27,33 +27,17 @@ const ControlImage = styled.img`
 export default function CardControls() {
   const [currentReview, setCurrentReview] = useContext(AppContext);
 
-  function handleNext() {
-    if (currentReview >= 0) {
-      setCurrentReview(() => currentReview + 1);
-    } else if (currentReview < 0) {
-      console.log("Less than zero");
-    }
-  }
-
-  function handlePrevious() {
-    if (currentReview > 0) {
-      setCurrentReview(() => currentReview - 1);
-    } else if (currentReview <= 0) {
-      console.log("Less than zero, or zero.");
-    }
-  }
-
   return (
     <Container>
       <ControlImage
         src={previousIcon}
         alt={"click for previous review"}
-        onClick={() => handlePrevious()}
+        onClick={() => handlePrevious(currentReview, setCurrentReview)}
       />
       <ControlImage
         src={nextIcon}
         alt={"click for next review"}
-        onClick={() => handleNext()}
+        onClick={() => handleNext(currentReview, setCurrentReview)}
       />
     </Container>
   );
