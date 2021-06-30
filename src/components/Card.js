@@ -25,7 +25,7 @@ const UserImage = styled.img`
   top: -40px;
   width: 132px;
   border-radius: 100%;
-  filter: drop-shadow(6px -6px 0px #49a6ea);
+  filter: drop-shadow(6px -3px 0px #49a6ea);
 
   @media (min-width: 720px) {
     position: relative;
@@ -65,10 +65,18 @@ const Subtitle = styled.h4`
 const Review = styled.p`
   margin-bottom: 20px;
   width: 100%;
+  height: 140px;
   font-size: 15px;
+  line-height: 20px;
   font-weight: normal;
   font-family: sans-serif;
   opacity: 0.7;
+  /* border: 1px solid blue; */
+
+  @media (min-width: 720px) {
+    height: 80px;
+    text-align: center;
+  }
 `;
 
 export default function Card() {
