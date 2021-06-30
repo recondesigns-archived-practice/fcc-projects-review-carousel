@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { AppContext } from "../ContextProvider";
 import { reviews } from "../reviewData";
 import CardControls from "./CardControls";
-import img1 from "../assets/images/caraImg1.png";
+import backupImg from "../assets/images/image-1.png";
 
 const Container = styled.div`
   position: relative;
@@ -73,7 +73,6 @@ const Review = styled.p`
   font-weight: normal;
   font-family: sans-serif;
   opacity: 0.7;
-  /* border: 1px solid blue; */
 
   @media (min-width: 720px) {
     height: 80px;
@@ -83,19 +82,13 @@ const Review = styled.p`
 
 export default function Card() {
   const [currentReview] = useContext(AppContext);
-  let reviewData = [...reviews];
-  const { name, role, review } = getReview(reviewData, currentReview);
 
-  function getReview(arr, current) {
-    if (arr) {
-      return arr[current];
-    }
-  }
-
-  console.log(555, name, role, review);
   return (
     <Container>
-      <UserImage src={img1} alt={"user image"} />
+      <UserImage
+        src={reviews ? reviews[currentReview].image : backupImg}
+        alt={"user image"}
+      />
       <Title>{reviews ? reviews[currentReview].name : "No name"}</Title>
       <Subtitle>{reviews ? reviews[currentReview].role : "No role"}</Subtitle>
       <Review>{reviews ? reviews[currentReview].review : "No review"}</Review>
