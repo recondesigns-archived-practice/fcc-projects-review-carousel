@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { AppContext } from "../ContextProvider";
+import { reviews } from "../reviewData";
 import CardControls from "./CardControls";
 import img1 from "../assets/images/caraImg1.png";
 
@@ -80,16 +82,23 @@ const Review = styled.p`
 `;
 
 export default function Card() {
+  const [currentReview] = useContext(AppContext);
+  let reviewData = [...reviews];
+  const { name, role, review } = getReview(reviewData, currentReview);
+
+  function getReview(arr, current) {
+    if (arr) {
+      return arr[current];
+    }
+  }
+
+  console.log(555, name, role, review);
   return (
     <Container>
       <UserImage src={img1} alt={"user image"} />
-      <Title>{"Susan Smith"}</Title>
-      <Subtitle>{"Web Developer"}</Subtitle>
-      <Review>
-        {
-          "I am baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humlebrag pickled colring book salvia hoodie, cold-pressed four dollar toast everyday carry."
-        }
-      </Review>
+      <Title>{reviews ? reviews[currentReview].name : "No name"}</Title>
+      <Subtitle>{reviews ? reviews[currentReview].role : "No role"}</Subtitle>
+      <Review>{reviews ? reviews[currentReview].review : "No review"}</Review>
       <CardControls />
     </Container>
   );
