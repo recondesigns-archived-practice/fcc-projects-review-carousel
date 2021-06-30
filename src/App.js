@@ -35,7 +35,7 @@ export default function App() {
   return (
     <AppContainer>
       <Wrapper>
-        <Title>{"Our Reviews"}</Title>
+        <Title>{"Our Reviewssss"}</Title>
         <Underline />
       </Wrapper>
       <Card />
