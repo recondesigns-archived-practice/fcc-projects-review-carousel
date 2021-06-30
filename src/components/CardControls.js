@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { AppContext } from "../ContextProvider";
+import { reviews } from "../reviewData";
 import previousIcon from "../assets/images/previous-icon-blue.svg";
 import nextIcon from "../assets/images/next-icon-blue.svg";
 
@@ -23,25 +25,23 @@ const ControlImage = styled.img`
 `;
 
 export default function CardControls() {
-  const [counter, setCounter] = useState(0);
+  const [currentReview, setCurrentReview] = useContext(AppContext);
 
   function handleNext() {
-    if (counter >= 0) {
-      setCounter(() => counter + 1);
-    } else if (counter < 0) {
+    if (currentReview >= 0) {
+      setCurrentReview(() => currentReview + 1);
+    } else if (currentReview < 0) {
       console.log("Less than zero");
     }
   }
 
   function handlePrevious() {
-    if (counter > 0) {
-      setCounter(() => counter - 1);
-    } else if (counter <= 0) {
+    if (currentReview > 0) {
+      setCurrentReview(() => currentReview - 1);
+    } else if (currentReview <= 0) {
       console.log("Less than zero, or zero.");
     }
   }
-
-  console.log(counter);
 
   return (
     <Container>
